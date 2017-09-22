@@ -9,7 +9,11 @@ import { HeroListComponent } from './components/hero-list/hero-list.component';
   selector: 'app-root',
   template: `
     <h1>{{title}}</h1>
-    <toh-hero-list></toh-hero-list>
+    <nav>
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+    </nav>
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.css']
 })

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../classes/hero';
 import { HeroService } from '../../services/hero.service';
 
+import { Router } from '@angular/router'; 
+
 @Component({
   selector: 'toh-hero-list',
   templateUrl: './hero-list.component.html',
@@ -13,7 +15,7 @@ export class HeroListComponent implements OnInit {
   heroes : Hero[];
   selectedHero : Hero;
 
-  constructor(private heroService : HeroService) { 
+  constructor(private heroService : HeroService, private router : Router) { 
     
   }
 
@@ -22,8 +24,12 @@ export class HeroListComponent implements OnInit {
   }
 
   getHeroes() : void {
-    this.heroService.getHeroesSlowly()
+    this.heroService.getHeroes()
     .then(heroes => this.heroes = heroes);
+  }
+
+  gotoDetail() : void {
+    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 
   ngOnInit() {
